@@ -132,5 +132,20 @@ public class Audio {
         this.recordLabel = recordLabel;
     }
 
+    public MusicGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(MusicGenre genre) {
+        this.genre = genre;
+    }
+
+    public AudioFormat getAudioFormat() {
+        return audioFormat;
+    }
+
+    public void setAudioFormat(AudioFormat audioFormat) {
+        this.audioFormat = audioFormat;
+    }
 }
 
