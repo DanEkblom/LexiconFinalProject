@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>All Audio Listing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Track #</th>
+                <th>Length</th>
+                <th>Genre</th>
+                <th>Language</th>
+                <th>Audio Format</th>
+                <th>Media Type</th>
+                <th>Record Label</th>
+                <th>Bar Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="album: ${audioList}">
+                <td th:text="${album.artist}">...</td>
+                <td th:text="${album.title}">...</td>
+                <td th:text="${album.year}">...</td>
+                <td th:text="${album.numberOfTracks}">...</td>
+                <td th:text="${album.length}">...</td>
+                <td th:text="${album.genre}">...</td>
+                <td th:text="${album.language}">...</td>
+                <td th:text="${album.audioFormat}">...</td>
+                <td th:text="${album.mediaType}">...</td>
+                <td th:text="${album.recordLabel}">...</td>
+                <td th:text="${album.barCode}">...</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
