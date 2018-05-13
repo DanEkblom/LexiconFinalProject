@@ -1,42 +1,44 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import com.danekblom.lexicon.finalprojectrest.utils.AudioFormat;
-import com.danekblom.lexicon.finalprojectrest.utils.Language;
-import com.danekblom.lexicon.finalprojectrest.utils.MediaType;
-import com.danekblom.lexicon.finalprojectrest.utils.MusicGenre;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "Audio")
+@Entity
+@Table(name = "tblAudio")
 public class Audio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
+
+    private String artist;
 
     @NotNull
     private String title;
-    private int year;
-    private MediaType mediaType;
-    private Language language;
-    private String barCode;
 
-    private String artist;
-    private int length;
-    private int numberOfTracks;
+    private Integer year;
+
+    @Column(name = "tracks")
+    private Integer numberOfTracks;
+
+    private Integer length;
+    private String genre;
     private String recordLabel;
-    private MusicGenre genre;
-    private AudioFormat audioFormat;
+    private String language;
+    private String mediaType;
+    private String audioFormat;
+    private String barCode;
 
     public Audio() {
         // Empty constructor for JPA.
     }
 
-    public Audio(int id, String title, int year, String artist, String recordLabel, MusicGenre genre, int length, int numberOfTracks, MediaType mediaType, Language language, AudioFormat audioFormat, String barCode) {
+    public Audio(int id, String title, Integer year, String artist, String recordLabel, String genre, Integer length, Integer numberOfTracks, String mediaType, String language, String audioFormat, String barCode) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -52,11 +54,11 @@ public class Audio {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,27 +70,27 @@ public class Audio {
         this.title = title;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public MediaType getMediaType() {
+    public String getMediaType() {
         return mediaType;
     }
 
-    public void setMediaType(MediaType mediaType) {
+    public void setMediaType(String mediaType) {
         this.mediaType = mediaType;
     }
 
-    public Language getLanguage() {
+    public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
 
@@ -108,7 +110,7 @@ public class Audio {
         this.artist = artist;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return length;
     }
 
@@ -116,7 +118,7 @@ public class Audio {
         this.length = length;
     }
 
-    public int getNumberOfTracks() {
+    public Integer getNumberOfTracks() {
         return numberOfTracks;
     }
 
@@ -132,19 +134,19 @@ public class Audio {
         this.recordLabel = recordLabel;
     }
 
-    public MusicGenre getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(MusicGenre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public AudioFormat getAudioFormat() {
+    public String getAudioFormat() {
         return audioFormat;
     }
 
-    public void setAudioFormat(AudioFormat audioFormat) {
+    public void setAudioFormat(String audioFormat) {
         this.audioFormat = audioFormat;
     }
 }
