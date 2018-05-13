@@ -16,9 +16,15 @@ public class WebAudio {
     @Autowired
     AudioServiceImpl audioService;
 
+    /**
+     * HTTP GET Method for listing all audioService items in the allAudio.html Thymeleaf template
+     * Mapped to /allaudio
+     * @param model Spring class
+     * @return "allAudio", HTML/Thymeleaf document
+     */
     @GetMapping("/allaudio")
     public String getAllAudio(Model model) {
-        model.addAttribute("audioList", audioService.getAllMusic());
+        model.addAttribute("audioList", audioService.listAllAudioItems());
         return "allAudio";
     }
 
@@ -28,10 +34,19 @@ public class WebAudio {
         return "addAudio";
     }
 
+    /**
+     * POST Method for creating/adding an audioService item via the addAudio.html Thymeleaf template.
+     * Mapped to /addaudio
+     * @param audioItem Audio class item to be added. Validated before added.
+     * @param model Spring class
+     * @return "allAudio", HTML/Thymeleaf document
+     */
     @PostMapping("/addaudio")
     public String getAudio(@Valid Audio audioItem, Model model) {
         model.addAttribute("audioItem", new Audio());
-        model.addAttribute("addedAudioItem", audioService.addAudio(audioItem));
+        model.addAttribute("addedAudioItem", audioService.addAudioItem(audioItem));
         return "addAudio";
     }
+
+
 }
