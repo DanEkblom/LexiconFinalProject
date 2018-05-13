@@ -5,22 +5,22 @@
     <title>Add Audio Item</title>
 </head>
 <body>
-<h1>Form</h1>
-<form action="#" th:action="@{/addAudio}" th:object="${audioItem}" method="post">
-    <p>Artist: <input type="text" th:field="*{artist}" /></p>
-    <p>Title: <input type="text" th:field="*{title}" /></p>
-    <p>Year: <input type="text" th:field="*{year}" /></p>
-    <p>Track #: <input type="text" th:field="*{numberOfTracks}" /></p>
-    <p>Length: <input type="text" th:field="*{length}" /></p>
-    <p>Genre: <input type="text" th:field="*{genre}" /></p>
-    <p>Language: <input type="text" th:field="*{language}" /></p>
-    <p>Audio Format: <input type="text" th:field="*{audioFormat}" /></p>
-    <p>Media Type: <input type="text" th:field="*{mediaType}" /></p>
-    <p>Record Label: <input type="text" th:field="*{recordLabel}" /></p>
-    <p>Bar Code: <input type="text" th:field="*{barCode}" /></p>
-    <p><input type="submit" value="Add" /></p>
-</form>
-<br>
-<span th:text="${addedAudioItem}">...</span>
+    <h1>Form</h1>
+    <form action="#" th:action="@{/addAudio}" th:object="${audioItem}" method="post">
+        <p>Artist: <input type="text" th:field="*{artist}" /></p>
+        <p>Title: <input type="text" th:field="*{title}" /></p>
+        <p>Year: <input type="text" th:field="*{year}" /></p>
+        <p>Track #: <input type="text" th:field="*{numberOfTracks}" /></p>
+        <p>Length: <input type="text" th:field="*{length}" /></p>
+        <p>Genre: <input type="text" th:field="*{genre}" /></p>
+        <p>Language: <input type="text" th:field="*{language}" /></p>
+        <p>Audio Format: <input type="text" th:field="*{audioFormat}" /></p>
+        <p>Media Type: <input type="text" th:field="*{mediaType}" /></p>
+        <p>Record Label: <input type="text" th:field="*{recordLabel}" /></p>
+        <p>Bar Code: <input type="text" th:field="*{barCode}" /></p>
+        <p><input type="submit" value="Add" /></p>
+    </form>
+    <br>
+    <span th:text="${addedAudioItem}">...</span>
 </body>
 </html>
