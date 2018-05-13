@@ -21,7 +21,7 @@ public class AudioServiceImpl {
     public AudioServiceImpl() {
     }
 
-    public Audio addAudio(Audio newAudio) {
+    public Audio addAudioItem(Audio newAudio) {
         return audioRepository.save(newAudio);
     }
 
@@ -84,7 +84,7 @@ public class AudioServiceImpl {
         return null;
     }
 
-    public List<Audio> getAllMusic() {
+    public List<Audio> listAllAudioItems() {
         return audioRepository.findAll();
     }
 }
