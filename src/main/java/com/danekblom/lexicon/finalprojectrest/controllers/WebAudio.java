@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/audio")
 public class WebAudio {
 
     @Autowired
@@ -18,17 +20,17 @@ public class WebAudio {
 
     /**
      * HTTP GET Method for listing all audioService items in the allAudio.html Thymeleaf template
-     * Mapped to /allaudio
+     * Mapped to /all
      * @param model Spring class
      * @return "allAudio", HTML/Thymeleaf document
      */
-    @GetMapping("/audio/all")
+    @GetMapping("/all")
     public String getAllAudio(Model model) {
         model.addAttribute("audioList", audioService.listAllAudioItems());
         return "allAudio";
     }
 
-    @GetMapping("/audio/add")
+    @GetMapping("/add")
     public String addAudio(Model model) {
         model.addAttribute("audioItem", new Audio());
         return "addAudio";
@@ -36,12 +38,12 @@ public class WebAudio {
 
     /**
      * POST Method for creating/adding an audioService item via the addAudio.html Thymeleaf template.
-     * Mapped to /addaudio
+     * Mapped to /add
      * @param audioItem Audio class item to be added. Validated before added.
      * @param model Spring class
      * @return "allAudio", HTML/Thymeleaf document
      */
-    @PostMapping("/audio/add")
+    @PostMapping("/add")
     public String getAudio(@Valid Audio audioItem, Model model) {
         model.addAttribute("audioItem", new Audio());
         model.addAttribute("addedAudioItem", audioService.addAudioItem(audioItem));
