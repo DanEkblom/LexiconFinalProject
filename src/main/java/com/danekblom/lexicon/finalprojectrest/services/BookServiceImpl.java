@@ -1,7 +1,7 @@
 package com.danekblom.lexicon.finalprojectrest.services;
 
+import com.danekblom.lexicon.finalprojectrest.data.BookRepository;
 import com.danekblom.lexicon.finalprojectrest.model.Book;
-import com.danekblom.lexicon.finalprojectrest.utils.BookGenre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +66,7 @@ public class BookServiceImpl {
         return authorResults;
     }
 
-    public List<Book> findByBookGenre(BookGenre bookGenre) {
+    public List<Book> findByBookGenre(String bookGenre) {
         List<Book> genreResults = new ArrayList<>();
 
         /*
