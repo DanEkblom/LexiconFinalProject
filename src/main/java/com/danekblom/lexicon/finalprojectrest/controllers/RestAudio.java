@@ -46,18 +46,7 @@ public class RestAudio {
     @RequestMapping(value = "/audio/add", method = RequestMethod.POST)
     public Audio addAudio(@Valid @RequestBody Audio audioItem) {
 
-        return audioService.addAudioItem(new Audio(audioItem.getId(),
-                audioItem.getTitle(),
-                audioItem.getYear(),
-                audioItem.getArtist(),
-                audioItem.getRecordLabel(),
-                audioItem.getGenre(),
-                audioItem.getLength(),
-                audioItem.getNumberOfTracks(),
-                audioItem.getMediaType(),
-                audioItem.getLanguage(),
-                audioItem.getAudioFormat(),
-                audioItem.getBarCode()));
+        return audioService.addAudioItem(audioItem);
     }
 
     //TODO: Write the PUT (Update) and DELETE methods.
