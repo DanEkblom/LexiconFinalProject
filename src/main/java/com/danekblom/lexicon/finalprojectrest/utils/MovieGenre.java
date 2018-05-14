@@ -7,5 +7,6 @@ public enum MovieGenre {
     DRAMA,
     HORROR,
     MATINEE,
+    SCIFI,
     THRILLER
 }
