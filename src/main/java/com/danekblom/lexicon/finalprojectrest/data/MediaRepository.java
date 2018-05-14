@@ -1,4 +1,4 @@
-package com.danekblom.lexicon.finalprojectrest.services;
+package com.danekblom.lexicon.finalprojectrest.data;
 
 import com.danekblom.lexicon.finalprojectrest.model.Media;
 import com.danekblom.lexicon.finalprojectrest.utils.Language;
