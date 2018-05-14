@@ -1,18 +1,13 @@
 package com.danekblom.lexicon.finalprojectrest.services;
 
 import com.danekblom.lexicon.finalprojectrest.model.Audio;
-import com.danekblom.lexicon.finalprojectrest.model.Music;
-import com.danekblom.lexicon.finalprojectrest.utils.Language;
-import com.danekblom.lexicon.finalprojectrest.utils.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Transactional
-@Component
+@Service
 public class AudioServiceImpl {
 
     @Autowired
@@ -25,12 +20,12 @@ public class AudioServiceImpl {
         return audioRepository.save(newAudio);
     }
 
-    public void updateAudio(Audio audioToUpdate) {
-        audioRepository.save(audioToUpdate);
+    public void updateAudio(Audio audioItemToUpdate) {
+        audioRepository.save(audioItemToUpdate);
     }
 
-    public void deleteAudio(Audio audioToDelete) {
-        audioRepository.delete(audioToDelete);
+    public void deleteAudio(Audio audioItemToDelete) {
+        audioRepository.delete(audioItemToDelete);
     }
 
     public List<Audio> findByTitle(String title) {
@@ -57,11 +52,11 @@ public class AudioServiceImpl {
         return yearResults;
     }
 
-    public List<Audio> findByMediaType(MediaType mediaType) {
+    public List<Audio> findByMediaType(String mediaType) {
         return null;
     }
 
-    public List<Audio> findByLanguage(Language language) {
+    public List<Audio> findByLanguage(String language) {
         return null;
     }
 
@@ -76,11 +71,11 @@ public class AudioServiceImpl {
         return null;
     }
 
-    public List<Music> findByArtist(String artist){
+    public List<Audio> findByArtist(String artist){
         return null;
     }
 
-    public List<Music> findByRecordLabel(String recordLabel) {
+    public List<Audio> findByRecordLabel(String recordLabel) {
         return null;
     }
 
