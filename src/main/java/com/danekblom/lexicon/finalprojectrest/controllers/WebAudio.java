@@ -47,8 +47,7 @@ public class WebAudio {
     public String getAudio(@Valid Audio audioItem, Model model) {
         model.addAttribute("audioItem", new Audio());
         model.addAttribute("addedAudioItem", audioService.addAudioItem(audioItem));
-        return "addAudio";
+        return "addAudio"; // addedAudio? New page showing the added item.
     }
-
 
 }
