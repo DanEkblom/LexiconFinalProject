@@ -1,7 +1,5 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
-@Component("Audio")
 @Entity
-@Table(name = "tblAudio")
+@Table(name = "tbl_audio")
 public class Audio {
 
     @Id
@@ -160,6 +158,31 @@ public class Audio {
 
     public void setAudioFormat(String audioFormat) {
         this.audioFormat = audioFormat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Audio audio = (Audio) o;
+        return Objects.equals(id, audio.id) &&
+                Objects.equals(artist, audio.artist) &&
+                Objects.equals(title, audio.title) &&
+                Objects.equals(year, audio.year) &&
+                Objects.equals(numberOfTracks, audio.numberOfTracks) &&
+                Objects.equals(length, audio.length) &&
+                Objects.equals(genre, audio.genre) &&
+                Objects.equals(recordLabel, audio.recordLabel) &&
+                Objects.equals(language, audio.language) &&
+                Objects.equals(mediaType, audio.mediaType) &&
+                Objects.equals(audioFormat, audio.audioFormat) &&
+                Objects.equals(barCode, audio.barCode);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, artist, title, year, numberOfTracks, length, genre, recordLabel, language, mediaType, audioFormat, barCode);
     }
 }
 
