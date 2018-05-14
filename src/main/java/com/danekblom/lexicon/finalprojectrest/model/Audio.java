@@ -1,5 +1,7 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Component("Audio")
 @Entity
 @Table(name = "tblAudio")
 public class Audio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
     private String artist;
@@ -28,10 +32,18 @@ public class Audio {
 
     private Integer length;
     private String genre;
+
+    @Column(name = "recordlabel")
     private String recordLabel;
     private String language;
+
+    @Column(name = "mediatype")
     private String mediaType;
+
+    @Column(name = "audioformat")
     private String audioFormat;
+
+    @Column(name = "barcode")
     private String barCode;
 
     public Audio() {
