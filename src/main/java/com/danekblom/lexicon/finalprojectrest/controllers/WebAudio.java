@@ -22,13 +22,13 @@ public class WebAudio {
      * @param model Spring class
      * @return "allAudio", HTML/Thymeleaf document
      */
-    @GetMapping("/allaudio")
+    @GetMapping("/audio/all")
     public String getAllAudio(Model model) {
         model.addAttribute("audioList", audioService.listAllAudioItems());
         return "allAudio";
     }
 
-    @GetMapping("/addaudio")
+    @GetMapping("/audio/add")
     public String addAudio(Model model) {
         model.addAttribute("audioItem", new Audio());
         return "addAudio";
@@ -41,7 +41,7 @@ public class WebAudio {
      * @param model Spring class
      * @return "allAudio", HTML/Thymeleaf document
      */
-    @PostMapping("/addaudio")
+    @PostMapping("/audio/add")
     public String getAudio(@Valid Audio audioItem, Model model) {
         model.addAttribute("audioItem", new Audio());
         model.addAttribute("addedAudioItem", audioService.addAudioItem(audioItem));
