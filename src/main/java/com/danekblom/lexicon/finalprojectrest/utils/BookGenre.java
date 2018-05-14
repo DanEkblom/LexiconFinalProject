@@ -4,5 +4,6 @@ public enum BookGenre {
     BIOGRAPHY,
     EDUCATIONAL,
     FANTASY,
+    THRILLER,
     SCIFI
 }
