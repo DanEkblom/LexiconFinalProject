@@ -1,7 +1,5 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
-@Component("Book")
 @Entity
-@Table(name = "tblBook")
+@Table(name = "tbl_book")
 public class Book {
 
     @Id
@@ -134,5 +132,28 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(year, book.year) &&
+                Objects.equals(numberOfPages, book.numberOfPages) &&
+                Objects.equals(genre, book.genre) &&
+                Objects.equals(language, book.language) &&
+                Objects.equals(publisher, book.publisher) &&
+                Objects.equals(mediaType, book.mediaType) &&
+                Objects.equals(isbn, book.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, author, title, year, numberOfPages, genre, language, publisher, mediaType, isbn);
     }
 }
