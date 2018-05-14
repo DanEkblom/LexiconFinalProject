@@ -1,6 +1,7 @@
 package com.danekblom.lexicon.finalprojectrest.utils;
 
-public enum MusicGenre {
+public enum AudioGenre {
+    AUDIOBOOK,
     CLASSICAL,
     INDUSTRIAL,
     INSTRUMENTAL,
