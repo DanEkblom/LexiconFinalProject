@@ -1,7 +1,5 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
-@Component("Video")
 @Entity
-@Table(name = "tblVideo")
+@Table(name = "tbl_video")
 public class Video {
 
     @Id
@@ -158,5 +156,30 @@ public class Video {
 
     public void setBarCode(String barCode) {
         this.barCode = barCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Video video = (Video) o;
+        return Objects.equals(id, video.id) &&
+                Objects.equals(title, video.title) &&
+                Objects.equals(year, video.year) &&
+                Objects.equals(originalTitle, video.originalTitle) &&
+                Objects.equals(director, video.director) &&
+                Objects.equals(genre, video.genre) &&
+                Objects.equals(length, video.length) &&
+                Objects.equals(mediaType, video.mediaType) &&
+                Objects.equals(language, video.language) &&
+                Objects.equals(audioFormat, video.audioFormat) &&
+                Objects.equals(videoFormat, video.videoFormat) &&
+                Objects.equals(barCode, video.barCode);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, title, year, originalTitle, director, genre, length, mediaType, language, audioFormat, videoFormat, barCode);
     }
 }
