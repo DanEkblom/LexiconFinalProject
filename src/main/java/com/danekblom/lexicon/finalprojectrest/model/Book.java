@@ -1,29 +1,67 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import com.danekblom.lexicon.finalprojectrest.utils.BookGenre;
-import com.danekblom.lexicon.finalprojectrest.utils.Language;
-import com.danekblom.lexicon.finalprojectrest.utils.MediaType;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Entity(name = "Book")
-public class Book extends Media {
+@Component("Book")
+@Entity
+@Table(name = "tblBook")
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Integer id;
 
     private String author;
-    private BookGenre bookGenre;
-    private int numberOfPages;
+
+    @NotNull
+    private String title;
+    private Integer year;
+
+
+    @Column(name = "pages")
+    private Integer numberOfPages;
+
+    private String genre;
+    private String language;
     private String publisher;
+
+    @Column(name = "mediatype")
+    private String mediaType;
+
+    private String isbn;
 
     public Book () {
         // Empty constructor for JPA.
     }
 
-    public Book(int id, String title, int year, MediaType mediaType, Language language, String barCode, String author, BookGenre bookGenre, int numberOfPages, String publisher) {
-        super(id, title, year, mediaType, language, barCode);
+    public Book(Integer id, String author, String title, Integer year, Integer numberOfPages, String genre, String language, String publisher, String mediaType, String isbn) {
+        this.id = id;
         this.author = author;
-        this.bookGenre = bookGenre;
+        this.title = title;
+        this.year = year;
         this.numberOfPages = numberOfPages;
+        this.genre = genre;
+        this.language = language;
         this.publisher = publisher;
+        this.mediaType = mediaType;
+        this.isbn = isbn;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAuthor() {
@@ -34,20 +72,44 @@ public class Book extends Media {
         this.author = author;
     }
 
-    public BookGenre getBookGenre() {
-        return bookGenre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookGenre(BookGenre bookGenre) {
-        this.bookGenre = bookGenre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getNumberOfPages() {
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getNumberOfPages() {
         return numberOfPages;
     }
 
-    public void setNumberOfPages(int numberOfPages) {
+    public void setNumberOfPages(Integer numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getPublisher() {
@@ -58,63 +120,19 @@ public class Book extends Media {
         this.publisher = publisher;
     }
 
-    @Override
-    public int getId() {
-        return super.getId();
+    public String getMediaType() {
+        return mediaType;
     }
 
-    @Override
-    public void setId(int id) {
-        super.setId(id);
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
-    @Override
-    public String getTitle() {
-        return super.getTitle();
+    public String getIsbn() {
+        return isbn;
     }
 
-    @Override
-    public void setTitle(String title) {
-        super.setTitle(title);
-    }
-
-    @Override
-    public int getYear() {
-        return super.getYear();
-    }
-
-    @Override
-    public void setYear(int year) {
-        super.setYear(year);
-    }
-
-    @Override
-    public MediaType getMediaType() {
-        return super.getMediaType();
-    }
-
-    @Override
-    public void setMediaType(MediaType mediaType) {
-        super.setMediaType(mediaType);
-    }
-
-    @Override
-    public Language getLanguage() {
-        return super.getLanguage();
-    }
-
-    @Override
-    public void setLanguage(Language language) {
-        super.setLanguage(language);
-    }
-
-    @Override
-    public String getBarCode() {
-        return super.getBarCode();
-    }
-
-    @Override
-    public void setBarCode(String barCode) {
-        super.setBarCode(barCode);
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }
