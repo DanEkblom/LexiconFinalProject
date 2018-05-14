@@ -1,17 +1,14 @@
 package com.danekblom.lexicon.finalprojectrest.services;
 
 import com.danekblom.lexicon.finalprojectrest.model.Book;
-import com.danekblom.lexicon.finalprojectrest.model.Media;
 import com.danekblom.lexicon.finalprojectrest.utils.BookGenre;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Transactional
-@Component
+@Service
 public class BookServiceImpl {
 
     @Autowired
@@ -24,7 +21,7 @@ public class BookServiceImpl {
             bookRepository.save(newBook);
         }
         catch (Exception e) {
-            System.out.println("Could not create the book:");
+            System.out.println("Could not create the book\"" + newBook.getTitle() + "\": ");
             e.printStackTrace();
         }
     }
@@ -34,7 +31,7 @@ public class BookServiceImpl {
             bookRepository.save(book);
         }
         catch (Exception e){
-            System.out.println("Could not update \"" + book.getTitle() + "\":");
+            System.out.println("Could not update \"" + book.getTitle() + "\": ");
             e.printStackTrace();
         }
     }
@@ -44,26 +41,26 @@ public class BookServiceImpl {
             bookRepository.delete(book);
         }
         catch (Exception e) {
-            System.out.println("Could not delete \"" + book.getTitle() + "\":");
+            System.out.println("Could not delete \"" + book.getTitle() + "\": ");
             e.printStackTrace();
         }
     }
 
     // Read operations on Book object(s) in repository
 
-    public List<Media> getAllBooks() {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public List<Media> findByAuthor(String author) {
+    public List<Book> findByAuthor(String author) {
 
-        List<Media> authorResults = new ArrayList<>();
-        //List<Media> allBooks = bookRepository.findAll();
+        List<Book> authorResults = new ArrayList<>();
+        List<Book> allBooks = bookRepository.findAll();
 
-        for (Media book : bookRepository.findAll()) {
-            //if (book.get) {
-            //    authorResults.add(book);
-            //}
+        for (Book book : bookRepository.findAll()) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                authorResults.add(book);
+            }
         }
 
         return authorResults;
