@@ -18,6 +18,11 @@ public class WebAudio {
     @Autowired
     AudioServiceImpl audioService;
 
+    @RequestMapping("")
+    public String getAudioRoot() {
+        return "audioinfo";
+    }
+
     /**
      * HTTP GET Method for listing all audioService items in the allAudio.html Thymeleaf template
      * Mapped to /all
