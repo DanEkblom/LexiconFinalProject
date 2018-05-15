@@ -75,6 +75,11 @@ public class RestAudio {
 
     //TODO: Write the PUT (Update) and DELETE methods.
 
+    /**
+     * U in CRUD. Updates an Audio item and saves it to the data source
+     * @param id The id of the Audio item to be updated
+     * @return Audio class
+     */
     @RequestMapping(value = "/audio/edit/{id}", method = RequestMethod.PUT)
     public Audio editAudio(@PathVariable("id") Integer id) {
 
