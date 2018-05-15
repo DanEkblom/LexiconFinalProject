@@ -1,9 +1,12 @@
 package com.danekblom.lexicon.finalprojectrest.controllers;
 
 import com.danekblom.lexicon.finalprojectrest.model.Audio;
+import com.danekblom.lexicon.finalprojectrest.model.DocumentationResponse;
 import com.danekblom.lexicon.finalprojectrest.services.AudioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/rest")
@@ -19,6 +24,20 @@ public class RestAudio {
 
     @Autowired
     AudioServiceImpl audioService;
+
+    private Map<String, String> howToUse = new LinkedHashMap<>();
+
+    @GetMapping()
+    public DocumentationResponse instructions() {
+
+        howToUse.put("/audio/all/", "Get full audio item listing");
+        howToUse.put("/audio/{id}", "Get audio item by id");
+        howToUse.put("/audio/add", "Add an audio item");
+        howToUse.put("/audio/edit/{id}", "Edit an audio item by id");
+        howToUse.put("/audio/delete/{id}", "Delete an audio item by id");
+
+        return new DocumentationResponse(howToUse);
+    }
 
     /**
      * R in CRUD.
@@ -37,6 +56,11 @@ public class RestAudio {
         }
     }
 
+    @RequestMapping("/audio/{id}")
+    public Audio getById(@PathVariable("id") Integer id) {
+        return audioService.findById(id);
+    }
+
     /**
      * C in CRUD. Creates an Audio item and adds it to the data source
      * @param audioItem Audio class item to be added
@@ -51,6 +75,12 @@ public class RestAudio {
 
     //TODO: Write the PUT (Update) and DELETE methods.
 
+    @RequestMapping(value = "/audio/edit/{id}", method = RequestMethod.PUT)
+    public Audio editAudio(@PathVariable("id") Integer id) {
+
+        // NOT DONE!
+        return audioService.findById(id);
+    }
     /*
     @RequestMapping("/addAudio/{var1}/{var2}/{var3}/{var4}/{var5}/{var6}/{var7}/{var8}/{var9}/{var10}/{var11}/{var12}")
     public Audio addAudio(@PathVariable("var1") Integer id,
