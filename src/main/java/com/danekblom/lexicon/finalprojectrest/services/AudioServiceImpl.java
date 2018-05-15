@@ -29,6 +29,16 @@ public class AudioServiceImpl {
         audioRepository.delete(audioItemToDelete);
     }
 
+    public Audio findById(Integer id) {
+        for (Audio foundAudioItem : audioRepository.findAll())
+        {
+            if (foundAudioItem.getId() == id) {
+                return foundAudioItem;
+            }
+        }
+        return null;
+    }
+
     public List<Audio> findByTitle(String title) {
         List<Audio> titleResults = new ArrayList<>();
 
