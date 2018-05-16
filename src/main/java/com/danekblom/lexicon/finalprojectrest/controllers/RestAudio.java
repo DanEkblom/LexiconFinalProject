@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,28 +25,43 @@ public class RestAudio {
     @Autowired
     AudioServiceImpl audioService;
 
-    private Map<String, String> howToUse = new LinkedHashMap<>();
+    private Map<String, String> howToUse = new HashMap<>();
+    private Map<String, String> restCategories = new HashMap<>();
+
+    // URI mappings for info/instructions
 
     @GetMapping()
+    public DocumentationResponse restInstructions() {
+        restCategories.put("/audio", "Instructions for Audio");
+        restCategories.put("/book", "Instructions for Books");
+        restCategories.put("/video", "Instructions for Video");
+
+        return new DocumentationResponse(restCategories);
+    }
+
+    @GetMapping("/audio")
     public DocumentationResponse instructions() {
 
-        howToUse.put("/audio/all/", "Get full audio item listing");
-        howToUse.put("/audio/{id}", "Get audio item by id");
-        howToUse.put("/audio/add", "Add an audio item");
-        howToUse.put("/audio/edit/{id}", "Edit an audio item by id");
-        howToUse.put("/audio/delete/{id}", "Delete an audio item by id");
+        howToUse.put("/all", "Get full audio item listing");
+        howToUse.put("/{id}", "Get audio item by id");
+        howToUse.put("/add", "Add an audio item");
+        howToUse.put("/edit/{id}", "Edit an audio item by id");
+        howToUse.put("/delete/{id}", "Delete an audio item by id");
 
         return new DocumentationResponse(howToUse);
     }
 
+    // CRUD methods with URI mappings
+
     /**
      * R in CRUD.
-     * HTTP GET Method. Returns a list of all Audio items in data source
+     * HTTP GET Method. Returns a list of all Audio items in data source.
      * @return List of Audio items
      */
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/audio/all", method = RequestMethod.GET)
     public List<Audio> getAll() {
+
         if (audioService.listAllAudioItems().isEmpty()) {
             System.out.println("Please add a couple of albums."); // For console logging during development
             return null;
@@ -58,11 +73,13 @@ public class RestAudio {
 
     @RequestMapping("/audio/{id}")
     public Audio getById(@PathVariable("id") Integer id) {
+
         return audioService.findById(id);
     }
 
     /**
-     * C in CRUD. Creates an Audio item and adds it to the data source
+     * C in CRUD.
+     * HTTP POST Method. Creates an Audio item and adds it to the data source.
      * @param audioItem Audio class item to be added
      * @return Audio class
      */
@@ -73,19 +90,46 @@ public class RestAudio {
         return audioService.addAudioItem(audioItem);
     }
 
-    //TODO: Write the PUT (Update) and DELETE methods.
-
     /**
-     * U in CRUD. Updates an Audio item and saves it to the data source
-     * @param id The id of the Audio item to be updated
+     * U in CRUD.
+     * HTTP PUT Method. Updates an Audio item and saves it to the data source.
+     * @param id ID of the Audio item to be updated
+     * @param updatedAudioItem The old Audio item passed into the method containing new info
      * @return Audio class
      */
     @RequestMapping(value = "/audio/edit/{id}", method = RequestMethod.PUT)
-    public Audio editAudio(@PathVariable("id") Integer id) {
+    public Audio editAudio(@PathVariable("id") Integer id, @Valid @RequestBody Audio updatedAudioItem) {
 
-        // NOT DONE!
-        return audioService.findById(id);
+        Audio audioItem = audioService.findById(id);
+
+        audioItem.setArtist(updatedAudioItem.getArtist());
+        audioItem.setTitle(updatedAudioItem.getTitle());
+        audioItem.setYear(updatedAudioItem.getYear());
+        audioItem.setNumberOfTracks(updatedAudioItem.getNumberOfTracks());
+        audioItem.setLength(updatedAudioItem.getLength());
+        audioItem.setGenre(updatedAudioItem.getGenre());
+        audioItem.setRecordLabel(updatedAudioItem.getRecordLabel());
+        audioItem.setLanguage(updatedAudioItem.getLanguage());
+        audioItem.setMediaType(updatedAudioItem.getMediaType());
+        audioItem.setAudioFormat(updatedAudioItem.getAudioFormat());
+        audioItem.setBarCode(updatedAudioItem.getBarCode());
+
+        return audioService.updateAudioItem(audioItem);
     }
+
+    /**
+     * D in CRUD.
+     * HTTP DELETE Method. Deletes an Audio item from the data source.
+     * @param id ID of the Audio item to be deleted
+     */
+    @RequestMapping(value = "audio/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteAudio(@PathVariable("id") Integer id) {
+
+        Audio audioItem = audioService.findById(id);
+
+        audioService.deleteAudioItem(audioItem);
+    }
+
     /*
     @RequestMapping("/addAudio/{var1}/{var2}/{var3}/{var4}/{var5}/{var6}/{var7}/{var8}/{var9}/{var10}/{var11}/{var12}")
     public Audio addAudio(@PathVariable("var1") Integer id,
@@ -106,5 +150,4 @@ public class RestAudio {
         return new Audio(id, title, year, artist, recordLabel, genre, length, numberOfTracks, mediaType, language, audioFormat, barCode));
     }
     */
-
 }
