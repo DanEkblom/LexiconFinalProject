@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Audio {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
