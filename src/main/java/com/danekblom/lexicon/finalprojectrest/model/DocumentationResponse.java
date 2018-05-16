@@ -1,32 +1,35 @@
 package com.danekblom.lexicon.finalprojectrest.model;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DocumentationResponse {
-    //private String instructions = "";
-    private Map<String, String> information = new LinkedHashMap<>();
+
+    private Map<String, String> information = new HashMap<>();
+    private String error = "";
 
     public DocumentationResponse(Map information) { //(String instructions)
-        //this.instructions = instructions;
+
         this.information = information;
     }
 
-    /*
-    public String getInstructions() {
-        //return instructions;
+    public DocumentationResponse(String error) {
+        this.error = error;
     }
 
-    public void setInstructions(String instructions) {
-        //this.instructions = instructions;
-    }
-    */
-
-    public Map<String, String> getMap() {
+    public Map<String, String> getInformation() {
         return information;
     }
 
-    public void setMap(Map<String, String> map) {
-        this.information = map;
+    public void setInformation(Map<String, String> information) {
+        this.information = information;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }
