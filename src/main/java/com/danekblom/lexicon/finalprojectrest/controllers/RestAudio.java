@@ -54,30 +54,6 @@ public class RestAudio {
     // CRUD methods with URI mappings
 
     /**
-     * R in CRUD.
-     * HTTP GET Method. Returns a list of all Audio items in data source.
-     * @return List of Audio items
-     */
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/audio/all", method = RequestMethod.GET)
-    public List<Audio> getAll() {
-
-        if (audioService.listAllAudioItems().isEmpty()) {
-            System.out.println("Please add a couple of albums."); // For console logging during development
-            return null;
-        }
-        else {
-            return audioService.listAllAudioItems();
-        }
-    }
-
-    @RequestMapping("/audio/{id}")
-    public Audio getById(@PathVariable("id") Integer id) {
-
-        return audioService.findById(id);
-    }
-
-    /**
      * C in CRUD.
      * HTTP POST Method. Creates an Audio item and adds it to the data source.
      * @param audioItem Audio class item to be added
@@ -88,6 +64,28 @@ public class RestAudio {
     public Audio addAudio(@Valid @RequestBody Audio audioItem) {
 
         return audioService.addAudioItem(audioItem);
+    }
+
+    /**
+     * R in CRUD.
+     * HTTP GET Method. Returns a list of all Audio items in data source.
+     * @return List of Audio items
+     */
+    @RequestMapping(value = "/audio/all", method = RequestMethod.GET)
+    public List<Audio> getAll() {
+
+        if (audioService.listAllAudioItems().isEmpty()) {
+            new RestError().displayRestErrorMessage();
+        }
+        else {
+            return audioService.listAllAudioItems();
+        }
+        return null;
+    }
+
+    @RequestMapping("/audio/{id}")
+    public Audio getById(@PathVariable("id") Integer id) {
+        return audioService.findById(id);
     }
 
     /**
@@ -125,9 +123,11 @@ public class RestAudio {
     @RequestMapping(value = "audio/delete/{id}", method = RequestMethod.DELETE)
     public void deleteAudio(@PathVariable("id") Integer id) {
 
+        audioService.deleteById(id);
+        /*
         Audio audioItem = audioService.findById(id);
-
         audioService.deleteAudioItem(audioItem);
+        */
     }
 
     /*
