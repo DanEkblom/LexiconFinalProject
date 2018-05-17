@@ -92,7 +92,7 @@ public class RestAudio {
      * U in CRUD.
      * HTTP PUT Method. Updates an Audio item and saves it to the data source.
      * @param id ID of the Audio item to be updated
-     * @param updatedAudioItem The old Audio item passed into the method containing new info
+     * @param updatedAudioItem Audio item containing new info which will be merged into audioItem's info
      * @return Audio class
      */
     @RequestMapping(value = "/audio/edit/{id}", method = RequestMethod.PUT)
