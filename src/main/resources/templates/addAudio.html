@@ -6,8 +6,8 @@
     <link href="/css/appstyles.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Form</h1>
-    <form action="#" th:action="@{/audio/itemAdded}" th:object="${audioItem}" method="post">
+    <h1>Add record below:</h1>
+    <form id="addForm" class="addForm" th:action="@{/audio/itemAdded}" th:object="${audioItem}" method="post">
         <p>Artist: <input type="text" th:field="*{artist}" /></p>
         <p>Title: <input type="text" th:field="*{title}" /></p>
         <p>Year: <input type="text" th:field="*{year}" /></p>
