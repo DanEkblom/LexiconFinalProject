@@ -31,9 +31,9 @@ public class AudioServiceImpl {
 
     public Audio findById(Integer id) {
         // Andreas version:
-        if (audioRepository.findById(id).isPresent()) {
+        //if (audioRepository.findById(id).isPresent()) {
             return audioRepository.findById(id).get();
-        }
+        //}
 
         // Min version:
         /*for (Audio foundAudioItem : audioRepository.findAll())
@@ -52,7 +52,7 @@ public class AudioServiceImpl {
         }
         */
 
-        return null;
+        //return null;
     }
 
     public Audio updateAudioItem(Audio audioItemToUpdate) {
