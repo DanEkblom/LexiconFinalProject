@@ -20,6 +20,8 @@
                 <th>Media Type</th>
                 <th>Record Label</th>
                 <th>Bar Code</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -35,8 +37,13 @@
                 <td th:text="${album.mediaType}">...</td>
                 <td th:text="${album.recordLabel}">...</td>
                 <td th:text="${album.barCode}">...</td>
+                <td><a th:href="@{'/audio/edit/' + ${album.id}}">Edit</a></td>
+                <td><a th:href="@{'/audio/delete/' + ${album.id}}">Delete</a></td>
             </tr>
         </tbody>
     </table>
+    <div>
+        <p><a href="/audio">Back to options</a></p>
+    </div>
 </body>
 </html>
