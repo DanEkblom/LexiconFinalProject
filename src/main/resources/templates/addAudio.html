@@ -25,5 +25,8 @@
     <div th:object="${addedAudioItem}"> <!-- th:unless="${addedAudioItem?}" -->
         <p><span style="font-style: italic;" th:if="${addedAudioItem != null}" th:text="${addedAudioItem.artist} + '\'s &quot;' + ${addedAudioItem.title} + '&quot; added.'">...</span></p>
     </div>
+    <div>
+        <a href="/audio">Back to options</a>
+    </div>
 </body>
 </html>
