@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Audio Item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/appstyles.css" rel="stylesheet">
+</head>
+<body>
+<h1>Edit item below:</h1>
+<form id="addForm" class="addForm" th:action="@{/audio/itemUpdated}" th:object="${audioItemToUpdate}" method="post">
+    <input type="hidden" th:field="*{id}" value="${audioItemToUpdate.id}">
+    <p>Artist: <input type="text" th:field="*{artist}" value="${audioItemToUpdate.artist}" /></p>
+    <p>Title: <input type="text" th:field="*{title}" value="${audioItemToUpdate.title}" /></p>
+    <p>Year: <input type="text" th:field="*{year}" value="${audioItemToUpdate.year}" /></p>
+    <p>Track #: <input type="text" th:field="*{numberOfTracks}" value="${audioItemToUpdate.numberOfTracks}" /></p>
+    <p>Length: <input type="text" th:field="*{length}" value="${audioItemToUpdate.length}" /></p>
+    <p>Genre: <input type="text" th:field="*{genre}" value="${audioItemToUpdate.genre}" /></p>
+    <p>Language: <input type="text" th:field="*{language}" value="${audioItemToUpdate.language}" /></p>
+    <p>Audio Format: <input type="text" th:field="*{audioFormat}" value="${audioItemToUpdate.audioFormat}" /></p>
+    <p>Media Type: <input type="text" th:field="*{mediaType}" value="${audioItemToUpdate.mediaType}" /></p>
+    <p>Record Label: <input type="text" th:field="*{recordLabel}" value="${audioItemToUpdate.recordLabel}" /></p>
+    <p>Bar Code: <input type="text" th:field="*{barCode}" value="${audioItemToUpdate.barCode}" /></p>
+    <p><input type="submit" value="Update" /></p>
+
+<div>
+    <p>Delete instead? <a href="@{'/deleteAudio}' + ${audioItemToUpdate.id}}">Yes!</a></p>
+    <p><a href="/audio">Back to options</a></p>
+</div>
+
+</form>
+</body>
+</html>
