@@ -3,9 +3,14 @@ body {
     background-color: rgba(225, 225, 225, 1);
 }
 
+p, td {
+    font-size: .8em;
+}
+
 .addForm input[type="text"] {
-    color: rgba(255, 255, 255, 1);
-    border: 0;
-    /* border-color: rgba(0, 0, 0, 1); */
-    background-color: rgba(255, 255, 0, .9);
+    font-size: .8em;
+    color: rgba(25, 25, 25, 1);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    background-color: rgba(225, 225, 225, 1);
 }
