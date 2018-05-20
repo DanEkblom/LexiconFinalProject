@@ -20,11 +20,11 @@ public abstract class Media {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    private Integer id;
 
     @NotNull
     private String title;
-    private int year;
+    private Integer year;
     private MediaType mediaType;
     private Language language;
     private String barCode;
