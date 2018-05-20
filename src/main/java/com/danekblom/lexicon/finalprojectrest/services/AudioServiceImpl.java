@@ -1,6 +1,7 @@
 package com.danekblom.lexicon.finalprojectrest.services;
 
 import com.danekblom.lexicon.finalprojectrest.data.AudioRepository;
+import com.danekblom.lexicon.finalprojectrest.exceptions.ResourceNotFoundException;
 import com.danekblom.lexicon.finalprojectrest.model.Audio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +31,13 @@ public class AudioServiceImpl {
     }
 
     public Audio findById(Integer id) {
-        // Andreas version:
-        //if (audioRepository.findById(id).isPresent()) {
-            return audioRepository.findById(id).get();
-        //}
 
-        // Min version:
+        // Apress "Beg. Spring Boot 2 Appl." version
+        return audioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No post found with id: " + id));
+        // Andreas version:
+        //    return audioRepository.findById(id).get();
+
+        // My first version:
         /*for (Audio foundAudioItem : audioRepository.findAll())
         {
             if (foundAudioItem.getId() == id) {
@@ -57,6 +59,8 @@ public class AudioServiceImpl {
 
     public Audio updateAudioItem(Audio audioItemToUpdate) {
 
+        audioRepository.findById(audioItemToUpdate.getId()).orElseThrow(() -> new ResourceNotFoundException("No post found with id: " + audioItemToUpdate.getId()));
+
         return audioRepository.save(audioItemToUpdate);
     }
 
@@ -72,6 +76,8 @@ public class AudioServiceImpl {
     */
 
     public void deleteById(Integer id) {
+
+        audioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No post found with id: " + id));
         audioRepository.deleteById(id);
     }
 
