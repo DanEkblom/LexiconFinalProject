@@ -85,6 +85,7 @@ public class RestAudio {
 
     @RequestMapping("/audio/{id}")
     public Audio getById(@PathVariable("id") Integer id) {
+
         return audioService.findById(id);
     }
 
