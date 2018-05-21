@@ -7,18 +7,19 @@
 </head>
 <body>
     <h1>Add record below:</h1>
+    <!-- type="checkbox" value="x", type="radio" value="x"-->
     <form id="addForm" class="addForm" th:action="@{/audio/itemAdded}" th:object="${audioItem}" method="post">
-        <p>Artist: <input type="text" th:field="*{artist}" /></p>
-        <p>Title: <input type="text" th:field="*{title}" /></p>
-        <p>Year: <input type="text" th:field="*{year}" /></p>
-        <p>Track #: <input type="text" th:field="*{numberOfTracks}" /></p>
-        <p>Length: <input type="text" th:field="*{length}" /></p>
-        <p>Genre: <input type="text" th:field="*{genre}" /></p>
-        <p>Language: <input type="text" th:field="*{language}" /></p>
-        <p>Audio Format: <input type="text" th:field="*{audioFormat}" /></p>
-        <p>Media Type: <input type="text" th:field="*{mediaType}" /></p>
-        <p>Record Label: <input type="text" th:field="*{recordLabel}" /></p>
-        <p>Bar Code: <input type="text" th:field="*{barCode}" /></p>
+        <p><label for="artist">Artist: </label><input type="text" id="artist" th:field="*{artist}" placeholder="Artist name here" required="required" /></p>
+        <p><label for="title">Title: </label><input type="text" id="title" th:field="*{title}" /></p>
+        <p><label for="year">Year: </label><input type="text" id="year" th:field="*{year}" /></p>
+        <p><label for="tracks">Track #: </label><input type="text" id="tracks" th:field="*{numberOfTracks}" /></p>
+        <p><label for="length">Length: </label><input type="text" id="length" th:field="*{length}" /></p>
+        <p><label for="genre">Genre: </label><input type="text" id="genre" th:field="*{genre}" /></p>
+        <p><label for="language">Language: </label><input type="text" id="language" th:field="*{language}" /></p>
+        <p><label for="audioformat">Audio Format: </label><input type="text" id="audioformat" th:field="*{audioFormat}" /></p>
+        <p><label for="mediatype">Media Type: </label><input type="text" id="mediatype" th:field="*{mediaType}" /></p>
+        <p><label for="recordlabel">Record Label: </label><input type="text" id="recordlabel" th:field="*{recordLabel}" /></p>
+        <p><label for="barcode">Bar Code: </label><input type="text" id="barcode" th:field="*{barCode}" /></p>
         <p><input type="submit" value="Add" /></p>
     </form>
     <br>
@@ -26,7 +27,7 @@
         <p><span style="font-style: italic;" th:if="${addedAudioItem != null}" th:text="${addedAudioItem.artist} + '\'s &quot;' + ${addedAudioItem.title} + '&quot; added.'">...</span></p>
     </div>
     <div>
-        <a href="/audio">Back to options</a>
+        <p><a href="/audio">Back to options</a></p>
     </div>
 </body>
 </html>
