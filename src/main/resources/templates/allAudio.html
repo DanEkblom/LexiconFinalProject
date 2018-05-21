@@ -7,40 +7,36 @@
 </head>
 <body>
     <table class="allAudioTable">
-        <thead>
-            <tr class="tableHeaderRow">
-                <td>Artist</td>
-                <td>Title</td>
-                <td>Year</td>
-                <td>Track #</td>
-                <td>Length</td>
-                <td>Genre</td>
-                <td>Language</td>
-                <td>Audio Format</td>
-                <td>Media Type</td>
-                <td>Record Label</td>
-                <td>Bar Code</td>
-                <td>Edit</td>
-                <td>Delete</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="album: ${audioList}">
-                <td th:text="${album.artist}">...</td>
-                <td th:text="${album.title}">...</td>
-                <td th:text="${album.year}">...</td>
-                <td th:text="${album.numberOfTracks}">...</td>
-                <td th:text="${album.length}">...</td>
-                <td th:text="${album.genre}">...</td>
-                <td th:text="${album.language}">...</td>
-                <td th:text="${album.audioFormat}">...</td>
-                <td th:text="${album.mediaType}">...</td>
-                <td th:text="${album.recordLabel}">...</td>
-                <td th:text="${album.barCode}">...</td>
-                <td><a th:href="@{'/audio/edit/' + ${album.id}}">Edit</a></td>
-                <td><a th:href="@{'/audio/delete/' + ${album.id}}">Delete</a></td>
-            </tr>
-        </tbody>
+        <tr class="tableHeaderRow">
+            <td>Artist</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Track #</td>
+            <td>Length</td>
+            <td>Genre</td>
+            <td>Language</td>
+            <td>Audio Format</td>
+            <td>Media Type</td>
+            <td>Record Label</td>
+            <td>Bar Code</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        <tr th:each="album: ${audioList}">
+            <td th:text="${album.artist}">...</td>
+            <td th:text="${album.title}">...</td>
+            <td th:text="${album.year}">...</td>
+            <td th:text="${album.numberOfTracks}">...</td>
+            <td th:text="${album.length}">...</td>
+            <td th:text="${album.genre}">...</td>
+            <td th:text="${album.language}">...</td>
+            <td th:text="${album.audioFormat}">...</td>
+            <td th:text="${album.mediaType}">...</td>
+            <td th:text="${album.recordLabel}">...</td>
+            <td th:text="${album.barCode}">...</td>
+            <td><a th:href="@{'/audio/edit/' + ${album.id}}">Edit</a></td>
+            <td><a th:href="@{'/audio/delete/' + ${album.id}}">Delete</a></td>
+        </tr>
     </table>
     <div>
         <p><a href="/audio">Back to options</a></p>
