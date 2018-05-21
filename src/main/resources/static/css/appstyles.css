@@ -32,7 +32,7 @@ td {
     width: 95%;
 }
 
-.addForm input[type="text"] {
+.addForm input[type="text"], input[type="number"] {
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     color: rgba(25, 25, 25, 1);
