@@ -8,4 +8,6 @@ public enum AudioGenre {
     METAL,
     POP,
     ROCK
+
+    //TODO: Rewrite this class like Type.java in Thymeleaf STSM example project
 }
