@@ -81,7 +81,6 @@ public class AudioServiceImpl {
         audioRepository.deleteById(id);
     }
 
-    // TODO: 2018-05-17: Implement methods below. Not critical for the REST API app at this time.
     public List<Audio> findByArtist(String artist){
         return null;
     }
