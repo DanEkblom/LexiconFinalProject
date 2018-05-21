@@ -23,8 +23,8 @@
     <p><input type="submit" value="Update" /></p>
 
 <div>
-    <p>Delete instead? <a href="@{'/deleteAudio}' + ${audioItemToUpdate.id}}">Yes!</a></p>
-    <p><a href="/audio">Back to options</a></p>
+    <p>Delete instead? <a th:href="@{'/audio/delete/' + ${audioItemToUpdate.id}}">Yes!</a></p>
+    <p><a href="/audio/all">Back to options</a></p>
 </div>
 
 </form>
