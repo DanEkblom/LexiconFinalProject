@@ -15,6 +15,14 @@
         <p><label for="tracks">Track #: </label><input type="text" id="tracks" th:field="*{numberOfTracks}" /></p>
         <p><label for="length">Length: </label><input type="text" id="length" th:field="*{length}" /></p>
         <p><label for="genre">Genre: </label><input type="text" id="genre" th:field="*{genre}" /></p>
+        <!--
+        <div>
+            <select id="genre" th:object="${genres}">
+                <option value="Select a genre..." ></option>
+                <option th:each="genre : ${genre}" th:value="${genre}" th:text="${genre}"></option>
+            </select>
+        </div>
+        -->
         <p><label for="language">Language: </label><input type="text" id="language" th:field="*{language}" /></p>
         <p><label for="audioformat">Audio Format: </label><input type="text" id="audioformat" th:field="*{audioFormat}" /></p>
         <p><label for="mediatype">Media Type: </label><input type="text" id="mediatype" th:field="*{mediaType}" /></p>
