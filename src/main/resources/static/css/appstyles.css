@@ -2,6 +2,8 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    font-size: 0.8em;
+    font-weight: 300;
     background-color: rgba(225, 225, 225, 1);
 }
 
@@ -11,26 +13,29 @@ h1 {
     font-size: 2em;
 }
 
-p {
-    font-weight: 300;
-    font-size: 0.8em;
-}
 
+p {
+    display: block;
+    margin: 1em 0px;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
 
 td {
+    padding: 3px;
+    /*
+    height: 1.2em;
     font-weight: 300;
     font-size: 0.8em;
+    */
 }
 
-.tableHeaderRow {
-    font-family: Oswald, sans-serif;
-    font-weight: 500;
-    font-size: 1.2em;
+#allAudioTable {
+    border-spacing: 0;
 }
 
-.allAudioTable {
-    width: 95%;
-}
 
 .addForm input[type="text"], input[type="number"] {
     font-family: 'Open Sans', sans-serif;
@@ -40,4 +45,29 @@ td {
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     background-color: rgba(225, 225, 225, 1);
     padding-left: 5px;
+    padding-right: 5px;
+    width: 140px;
 }
+
+.allAudioTable {
+    width: 95%;
+}
+
+.tableHeaderRow {
+    font-family: Oswald, sans-serif;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.rightAligned {
+    text-align: right;
+}
+
+/*
+ * Reasons for SASS:
+ * $bgColor: rgba(225, 225, 225, 1);
+ * => use in body, .addForm (et cetera)
+
+ @import "basic(.css)";
+ $variableName: value;
+ */
