@@ -3,10 +3,11 @@
 <head>
     <title>All Audio Listing</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/css/appstyles.css" rel="stylesheet">
+    <link href="/css/appstyles.css" data-th-href="@{/css/appstyles.css}" rel="stylesheet" />
+    <script src="/js/appscripts.js" data-th-src="@{/js/appscripts.js}" type="text/javascript"></script>
 </head>
-<body>
-    <table class="allAudioTable">
+<body onload="setcolor()">
+    <table id="allAudioTable" class="allAudioTable">
         <tr class="tableHeaderRow">
             <td>Artist</td>
             <td>Title</td>
@@ -18,12 +19,12 @@
             <td>Audio Format</td>
             <td>Media Type</td>
             <td>Record Label</td>
-            <td>Bar Code</td>
+            <td>EAN/Bar Code</td>
             <td>Edit</td>
             <td>Delete</td>
         </tr>
         <tr th:each="album: ${audioList}">
-            <td th:text="${album.artist}">...</td>
+            <td data-th-text="${album.artist}">...</td> <!-- data-th-text: HTML5 compliant -->
             <td th:text="${album.title}">...</td>
             <td th:text="${album.year}">...</td>
             <td th:text="${album.numberOfTracks}">...</td>
