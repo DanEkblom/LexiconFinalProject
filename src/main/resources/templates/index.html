@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Web App Start</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bootstrap411/css/bootstrap.min.css" data-th-href="@{/static/bootstrap411/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="/css/appstyles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav nav-collapse clear-fix">
+            <div class="logo"><a href="#"><img src="https://www.google.se/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" width="120" height="42" alt=""></a></div>
+            <ul>
+                <li><a href="#">Audio</a></li>
+                <li><a href="#">Nav2</a></li>
+                <li><a href="#">Nav3</a></li>
+                <li><a href="#">Nav4</a></li>
+                <li><a href="#">Nav5</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Web App Start - it works!</h1>
+        <p><a href="/audio">/audio</a> - "Stay a while, and listen..."</p>
+        <p><a href="#">/books</a> - Dead trees talking.</p>
+        <p><a href="#">/video</a> - Video killed the radio star.</p>
+    </main>
+    <footer>
+        <div th:insert="~{bits :: copy}">This page is &copy; Dan 2018</div>
+    </footer>
+</body>
+</html>
