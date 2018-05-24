@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Add Audio Item</title>
-    <link href="/css/appstyles.css" data-th-href="@{/css/appstyles.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bootstrap411/css/bootstrap.min.css" data-th-href="@{/bootstrap411/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link href="/css/appstyles.css" data-th-href="@{/css/appstyles.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>Add record below:</h1>
-    <!-- type="checkbox" value="x", type="radio" value="x"-->
+    <!-- type="checkbox" value="x", type="radio" value="x", div display:inline-block|block; float:left|right;-->
     <form id="addForm" class="addForm" th:action="@{/audio/itemAdded}" th:object="${audioItem}" method="post">
         <table>
             <tr><!-- <td><p class="rightAligned"><label for="artist">Artist: </label></p></td>--><td><input type="text" id="artist" th:field="*{artist}" placeholder="artist name" required="required" /></td></tr>
