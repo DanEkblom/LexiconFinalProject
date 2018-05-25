@@ -1,4 +1,4 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-sdivict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Add Audio Item</title>
@@ -8,16 +8,27 @@
     <link href="/css/appstyles.css" data-th-href="@{/css/appstyles.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<main>
     <h1>Add record below:</h1>
     <!-- type="checkbox" value="x", type="radio" value="x", div display:inline-block|block; float:left|right;-->
     <form id="addForm" class="addForm" th:action="@{/audio/itemAdded}" th:object="${audioItem}" method="post">
-        <table>
-            <tr><!-- <td><p class="rightAligned"><label for="artist">Artist: </label></p></td>--><td><input type="text" id="artist" th:field="*{artist}" placeholder="artist name" required="required" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="title">Title: </label></p></td>--><td><input type="text" id="title" th:field="*{title}" placeholder="album/single title" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="year">Year: </label></p></td>--><td><input type="text" id="year" th:field="*{year}" placeholder="release year" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="tracks">Track #: </label></p></td>--><td><input type="number" id="tracks" th:field="*{numberOfTracks}" min="1" step="1" placeholder="number of tracks" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="length">Length: </label></p></td>--><td><input type="number" id="length" th:field="*{length}" min="1" step="1" placeholder="length (minutes)" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="genre">Genre: </label></p></td>--><td><input type="text" id="genre" th:field="*{genre}" placeholder="Genre" /></td></tr>
+
+        <div id="formElements">
+            <div><label for="artist">Artist: </label></div><div><input type="text" id="artist" th:field="*{artist}" placeholder="artist name" required="required" /></div><br/>
+            <div><label for="title">Title: </label></div><div><input type="text" id="title" th:field="*{title}" placeholder="album/single title" /></div><br/>
+            <div><label for="year">Year: </label></div><div><input type="text" id="year" th:field="*{year}" placeholder="release year" /></div><br/>
+            <div><label for="tracks">Track #: </label></div><div><input type="number" id="tracks" th:field="*{numberOfTracks}" min="1" step="1" placeholder="number of tracks" /></div><br/>
+            <div><label for="length">Length: </label></div><div><input type="number" id="length" th:field="*{length}" min="1" step="1" placeholder="length (minutes)" /></div><br/>
+            <div><label for="genre">Genre: </label></div><!-- For regular text field, use <div><input type="text" id="genre" th:field="*{genre}" placeholder="Genre" /></div><br/>-->
+            <div>
+                <select id="musicgenre" th:field="*{genre}">
+                    <option label="Select a genre..." text="Select a genre..." value="Select a genre..." ></option>
+                    <option id="genre" th:each="genre : ${T(com.danekblom.lexicon.finalprojectrest.utils.AudioGenre).values()}"
+                                       th:value="${genre.genreName}"
+                                       th:text="${genre.genreName}">
+                    </option>
+                </select>
+            </div><br/>
             <!--
             <div>
                 <select id="genre" th:object="${genres}">
@@ -26,13 +37,13 @@
                 </select>
             </div>
             -->
-            <tr><!-- <td><p class="rightAligned"><label for="language">Language: </label></p></td>--><td><input type="text" id="language" th:field="*{language}" placeholder="language sung" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="audioformat">Audio Format: </label></p></td>--><td><input type="text" id="audioformat" th:field="*{audioFormat}" placeholder="mono, stereo, surround" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="mediatype">Media Type: </label></p></td>--><td><input type="text" id="mediatype" th:field="*{mediaType}" placeholder="cd, sacd" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="recordlabel">Record Label: </label></p></td>--><td><input type="text" id="recordlabel" th:field="*{recordLabel}" placeholder="record label" /></td></tr>
-            <tr><!-- <td><p class="rightAligned"><label for="barcode">Bar Code: </label></p></td>--><td><input type="text" id="barcode" th:field="*{barCode}" placeholder="ean / barcode" /></td></tr>
-            <tr><td><input type="submit" value="Add" /><input type="reset" value="Reset" /></td></tr>
-        </table>
+            <div><label for="language">Language: </label></div><div><input type="text" id="language" th:field="*{language}" placeholder="language sung" /></div></div><br/>
+        <div><label for="audioformat">Audio Format: </label></div><div><input type="text" id="audioformat" th:field="*{audioFormat}" placeholder="mono, stereo, surround" /></div><br/>
+        <div><label for="mediatype">Media Type: </label></div><div><input type="text" id="mediatype" th:field="*{mediaType}" placeholder="cd, sacd" /></div><br/>
+        <div><label for="recordlabel">Record Label: </label></div><div><input type="text" id="recordlabel" th:field="*{recordLabel}" placeholder="record label" /></div><br/>
+        <div><label for="barcode">Bar Code: </label></div><div><input type="text" id="barcode" th:field="*{barCode}" placeholder="ean / barcode" /></div><br/>
+        <div><input type="submit" value="Add" />&nbsp;<input type="reset" value="Reset" /></div>
+        </div>
     </form>
     <br>
     <div th:object="${addedAudioItem}"> <!-- th:unless="${addedAudioItem?}" -->
@@ -41,5 +52,6 @@
     <div>
         <p><a href="/audio">Back to options</a></p>
     </div>
+</main>
 </body>
 </html>
