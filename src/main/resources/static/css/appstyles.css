@@ -9,7 +9,7 @@ body {
 }
 
 main {
-    margin: 15px;
+    margin: 1em;
 }
 
 h1 {
@@ -21,20 +21,24 @@ h1 {
 
 p {
     display: block;
-    margin: 1em 0px;
+    margin: 1em 0;
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
 }
 
 td {
     padding: 3px;
-    /*
-    height: 1.2em;
-    font-weight: 300;
-    font-size: 0.8em;
-    */
+}
+
+div {
+    display: block;
+}
+
+label {
+    display: inline-block;
+    float: left;
 }
 
 #allAudioTable {
@@ -51,11 +55,11 @@ td {
     background-color: rgba(225, 225, 225, 1);
     padding-left: 5px;
     padding-right: 5px;
-    width: 140px;
+    width: 150px;
 }
 
 .allAudioTable {
-    width: 95%;
+    width: 100%;
 }
 
 .tableHeaderRow {
@@ -76,10 +80,10 @@ td {
 header {
     z-index: 99;
     position: fixed;
-    top: 0px;
+    top: 0;
     background-color: #292929;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     width: 100%;
 }
 
@@ -171,7 +175,7 @@ footer p {
 
     .main-nav {
         /*padding: 10px 0 10px;*/
-        padding: 0px;
+        padding: 0;
         clear: none;
     }
 
