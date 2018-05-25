@@ -9,41 +9,43 @@
     <script src="/js/appscripts.js" data-th-src="@{/js/appscripts.js}" type="text/javascript"></script>
 </head>
 <body onload="setcolor()">
-    <table id="allAudioTable" class="allAudioTable">
-        <tr class="tableHeaderRow">
-            <td>Artist</td>
-            <td>Title</td>
-            <td>Year</td>
-            <td>Track #</td>
-            <td>Length</td>
-            <td>Genre</td>
-            <td>Language</td>
-            <td>Audio Format</td>
-            <td>Media Type</td>
-            <td>Record Label</td>
-            <td>EAN/Bar Code</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>
-        <tr th:each="album: ${audioList}">
-            <td data-th-text="${album.artist}">...</td> <!-- data-th-text: HTML5 compliant -->
-            <td th:text="${album.title}">...</td>
-            <td th:text="${album.year}">...</td>
-            <td th:text="${album.numberOfTracks}">...</td>
-            <td th:text="${album.length}">...</td>
-            <td th:text="${album.genre}">...</td>
-            <td th:text="${album.language}">...</td>
-            <td th:text="${album.audioFormat}">...</td>
-            <td th:text="${album.mediaType}">...</td>
-            <td th:text="${album.recordLabel}">...</td>
-            <td th:text="${album.barCode}">...</td>
-            <td><a th:href="@{'/audio/edit/' + ${album.id}}">Edit</a></td>
-            <td><a th:href="@{'/audio/delete/' + ${album.id}}">Delete</a></td>
-        </tr>
-    </table>
-    <div>
-        <p><a href="/audio">Back to options</a></p>
-    </div>
-    <div th:insert="~{bits :: copy}"></div>
+    <main>
+        <table id="allAudioTable" class="allAudioTable">
+            <tr class="tableHeaderRow">
+                <td>Artist</td>
+                <td>Title</td>
+                <td>Year</td>
+                <td>Track #</td>
+                <td>Length</td>
+                <td>Genre</td>
+                <td>Language</td>
+                <td>Audio Format</td>
+                <td>Media Type</td>
+                <td>Record Label</td>
+                <td>EAN/Bar Code</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+            <tr th:each="album: ${audioList}">
+                <td data-th-text="${album.artist}">...</td> <!-- data-th-text: HTML5 compliant -->
+                <td th:text="${album.title}">...</td>
+                <td th:text="${album.year}">...</td>
+                <td th:text="${album.numberOfTracks}">...</td>
+                <td th:text="${album.length}">...</td>
+                <td th:text="${album.genre}">...</td>
+                <td th:text="${album.language}">...</td>
+                <td th:text="${album.audioFormat}">...</td>
+                <td th:text="${album.mediaType}">...</td>
+                <td th:text="${album.recordLabel}">...</td>
+                <td th:text="${album.barCode}">...</td>
+                <td><a th:href="@{'/audio/edit/' + ${album.id}}">Edit</a></td>
+                <td><a th:href="@{'/audio/delete/' + ${album.id}}">Delete</a></td>
+            </tr>
+        </table>
+        <div>
+            <p><a href="/audio">Back to options</a></p>
+        </div>
+        <div th:insert="~{bits :: copy}"></div>
+    </main>
 </body>
 </html>
