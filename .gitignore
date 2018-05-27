@@ -1,5 +1,7 @@
 /target/
 /db
+/src/resources/static/bootstrap/css
+/src/resources/static/bootstrap/js
 .mvn
 !.mvn/wrapper/maven-wrapper.jar
 Database.mv.db
