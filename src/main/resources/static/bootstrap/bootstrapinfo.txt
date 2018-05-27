@@ -1,0 +1,2 @@
+Place Bootstrap CSS and JS folders here.
+Site originally created with Bootstrap 4.1.1. Later version updates may change functionality.
