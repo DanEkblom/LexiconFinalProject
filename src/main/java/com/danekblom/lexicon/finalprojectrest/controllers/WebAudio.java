@@ -51,7 +51,6 @@ public class WebAudio {
      */
     @PostMapping("/itemAdded")
     public String addAudio(@Valid Audio audioItem, Model model) {
-        //TODO: "camelCase" audioGenre before adding it to the repo?
         model.addAttribute("audioItem", new Audio());
         model.addAttribute("addedAudioItem", audioService.addAudioItem(audioItem));
         return "addAudio";
