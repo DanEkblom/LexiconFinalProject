@@ -97,7 +97,7 @@ public class AudioServiceImpl {
         return titleResults;
     }
 
-    public List<Audio> findByYear(int year) {
+    public List<Audio> findByYear(Integer year) {
         List<Audio> yearResults = new ArrayList<>();
 
         for (Audio audioItem : audioRepository.findAll()) {
