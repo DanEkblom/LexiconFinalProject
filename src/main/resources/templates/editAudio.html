@@ -8,6 +8,7 @@
     <link href="/css/appstyles.css" data-th-href="@{/css/appstyles.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<main>
 <h1>Edit item below:</h1>
 <form id="addForm" class="addForm" th:action="@{/audio/itemUpdated}" th:object="${audioItemToUpdate}" method="post">
     <input type="hidden" th:field="*{id}" value="${audioItemToUpdate.id}">
@@ -30,5 +31,6 @@
 </div>
 
 </form>
+</main>
 </body>
 </html>
