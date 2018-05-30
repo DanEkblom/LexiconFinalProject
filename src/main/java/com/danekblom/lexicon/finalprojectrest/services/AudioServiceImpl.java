@@ -21,6 +21,7 @@ public class AudioServiceImpl {
 
     // _C_RUD
     public Audio addAudioItem(Audio newAudio) {
+
         return audioRepository.save(newAudio);
     }
 
@@ -82,10 +83,14 @@ public class AudioServiceImpl {
     }
 
     public List<Audio> findByArtist(String artist){
-        return null;
+
+        return audioRepository.findByArtistIgnoreCaseContaining(artist);
     }
 
-    public List<Audio> findByTitle(String title) {
+    public List<Audio> findByTitleIgnoreCaseContaining(String title) {
+
+        return audioRepository.findByTitleIgnoreCaseContaining(title);
+        /*
         List<Audio> titleResults = new ArrayList<>();
 
         for (Audio audioItem : audioRepository.findAll()) {
@@ -95,9 +100,14 @@ public class AudioServiceImpl {
         }
 
         return titleResults;
+        */
     }
 
-    public List<Audio> findByYear(int year) {
+    public List<Audio> findByYear(Integer year) {
+
+        return audioRepository.findByYear(year);
+
+        /*
         List<Audio> yearResults = new ArrayList<>();
 
         for (Audio audioItem : audioRepository.findAll()) {
@@ -107,17 +117,25 @@ public class AudioServiceImpl {
         }
 
         return yearResults;
+        */
     }
 
     public List<Audio> findByMediaType(String mediaType) {
-        return null;
+        return audioRepository.findByMediaType(mediaType);
+    }
+
+    public List<Audio> findByGenre(String genre) {
+        return audioRepository.findByGenre(genre);
     }
 
     public List<Audio> findByLanguage(String language) {
-        return null;
+        return audioRepository.findByLanguage(language);
     }
 
     public Audio findByBarCode(String barCode) {
+
+        return audioRepository.findByBarCode(barCode);
+        /*
         for (Audio audioItem : audioRepository.findAll())
         {
             if (audioItem.getBarCode().equals(barCode))
@@ -126,9 +144,10 @@ public class AudioServiceImpl {
             }
         }
         return null;
+        */
     }
 
     public List<Audio> findByRecordLabel(String recordLabel) {
-        return null;
+        return audioRepository.findByRecordLabel(recordLabel);
     }
 }
