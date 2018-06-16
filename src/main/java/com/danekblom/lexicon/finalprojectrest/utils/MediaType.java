@@ -4,6 +4,7 @@ public enum MediaType {
     BLURAY,
     BOOK,
     CD,
+    DIGITAL,
     DVD,
     SACD
 
